@@ -6,17 +6,8 @@ public class Coleiro extends Ave {
 	private String regiao;
 	private int cantPorMin;
 
-	public Coleiro() {
-		super();
-	}
-
-	public Coleiro(boolean cantTuiTui, String regiao, int cantPorMin) {
-		super();
-		this.cantTuiTui = cantTuiTui;
-		this.regiao = regiao;
-		this.cantPorMin = cantPorMin;
-	}
-
+	
+	
 	public boolean isCantTuiTui() {
 		return cantTuiTui;
 	}
@@ -44,5 +35,17 @@ public class Coleiro extends Ave {
 	@Override
 	public String toString() {
 		return "Coleiro:" + cantTuiTui + ";" + regiao + ";" + cantPorMin + ";" + super.toString();
+	}
+
+	@Override
+	public void impressao() {
+		System.out.println("#Coleiro");
+		System.out.println(this);
+
+	}
+
+	@Override
+	public String mostrarNome() {
+		return "Nome do pássaro é " + getNome();
 	}
 }

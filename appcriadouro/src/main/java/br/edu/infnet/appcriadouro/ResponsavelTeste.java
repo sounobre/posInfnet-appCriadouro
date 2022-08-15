@@ -14,13 +14,13 @@ public class ResponsavelTeste  implements ApplicationRunner{
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		Responsavel r1= new Responsavel("Diego Nobre","sounobre@hotmail.com", "12345678910");
-		System.out.println(r1);
+		AppAves.relatorio("Inserindo Responsavel 1", r1);
 		
 		Responsavel r2= new Responsavel("Ronaldo Matias","matias@hotmail.com", "23456789101");
-		System.out.println(r2);
+		AppAves.relatorio("Inserindo Responsavel 2", r2);
 		
 		Responsavel r3= new Responsavel("Rogerio Neri","rneri@hotmail.com", "34567891011");
-		System.out.println(r3);		
+		AppAves.relatorio("Inserindo Responsavel 3", r3);		
 	}
 
 }

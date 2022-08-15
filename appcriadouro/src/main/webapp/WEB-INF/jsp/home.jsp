@@ -8,6 +8,35 @@
 	<title>AppCriadouro</title>
 </head>
 <body>
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/canario/lista">Canario</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/coleiro/lista">Coleiro</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/curio/lista">Curio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="/ave/lista">Ave</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/criadouro/lista">Criadouro</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/responsavel/lista">Responsavel</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 	<div class="container mt-3">
 	  <h2>AppCriadouro</h2>
 	  <p>Criadouro de Pássaros nativos e exóticos.</p>   
@@ -31,6 +60,11 @@
 	        <td>endereco</td>
 	        <td>String</td>
 	        <td>Endereço do criadouro.</td>
+	      </tr>
+	      <tr>
+	        <td>tpAve</td>
+	        <td>String</td>
+	        <td>Tipo de ave vendida.</td>
 	      </tr>	      
 	    </tbody>
 	  </table>

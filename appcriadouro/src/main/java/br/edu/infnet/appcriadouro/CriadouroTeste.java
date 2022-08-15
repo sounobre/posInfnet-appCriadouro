@@ -17,17 +17,20 @@ public class CriadouroTeste implements ApplicationRunner {
 		Criadouro c1 = new Criadouro();		
 		c1.setEndereco("Rua da criação de canario Nº 1");
 		c1.setNome("Plantel dos canários");
-		System.out.println(c1);
+		c1.setTpAve("Canário");
+		AppAves.relatorio("Inserindo criadouro 1", c1);
 		
 		Criadouro c2 = new Criadouro();		
 		c2.setEndereco("Rua da criação de curió Nº 1");
 		c2.setNome("Plantel dos curiós");
-		System.out.println(c2);
+		c2.setTpAve("Coleiro");
+		AppAves.relatorio("Inserindo criadouro 2", c2);
 		
 		Criadouro c3 = new Criadouro();		
 		c3.setEndereco("Rua da criação de coleiro Nº 1");
 		c3.setNome("Plantel dos coleitos");
-		System.out.println(c3);	
+		c3.setTpAve("Curió");
+		AppAves.relatorio("Inserindo criadouro 3", c3);	
 	}
 
 }

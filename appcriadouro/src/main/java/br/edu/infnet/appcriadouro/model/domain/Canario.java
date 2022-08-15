@@ -6,17 +6,8 @@ public class Canario extends Ave {
 	private String raca;
 	private String classificacao;
 
-	public Canario() {
-		super();
-	}
-
-	public Canario(String tipo, String raca, String classificacao) {
-		super();
-		this.tipo = tipo;
-		this.raca = raca;
-		this.classificacao = classificacao;
-	}
-
+	
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -42,7 +33,22 @@ public class Canario extends Ave {
 	}
 
 	@Override
+	public String mostrarNome() {
+
+		String cantaBonito = tipo == "Timbre" ? " e ele canta muito bem" : "";
+
+		return getNome() + cantaBonito;
+	}
+
+	@Override
 	public String toString() {
 		return "Canario:" + tipo + ";" + raca + ";" + classificacao + ";" + super.toString();
+	}
+
+	@Override
+	public void impressao() {
+		System.out.println("#Canário");
+		System.out.println(this);
+
 	}
 }

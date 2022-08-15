@@ -1,22 +1,18 @@
 package br.edu.infnet.appcriadouro.model.domain;
 
-public class Criadouro {
+import br.edu.infnet.appcriadouro.interfaces.IPrinter;
+
+public class Criadouro implements IPrinter {
 
 	private String nome;
 	private String endereco;
+	private String tpAve;
 
-	public Criadouro() {
-		super();
-	}
+	@Override
+	public void impressao() {
+		System.out.println("#Criadouro");
+		System.out.println(this);
 
-	public Criadouro(String nome, String endereco) {
-		super();
-		this.nome = nome;
-		this.endereco = endereco;
-	}
-
-	public String getNome() {
-		return nome;
 	}
 
 	public void setNome(String nome) {
@@ -30,9 +26,19 @@ public class Criadouro {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+	
+	
+
+	public String getTpAve() {
+		return tpAve;
+	}
+
+	public void setTpAve(String tpAve) {
+		this.tpAve = tpAve;
+	}
 
 	@Override
 	public String toString() {
-		return "Criadouro: " + nome + ";" + endereco;
+		return "Criadouro: " + nome + ";" + endereco + ";" + tpAve;
 	}
 }
