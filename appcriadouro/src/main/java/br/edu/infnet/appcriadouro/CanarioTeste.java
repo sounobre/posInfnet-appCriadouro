@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appcriadouro.controller.CanarioController;
 import br.edu.infnet.appcriadouro.model.domain.Canario;
 
 @Component
@@ -26,8 +27,8 @@ public class CanarioTeste implements ApplicationRunner {
 		c1.setRaca("Salsa");
 		c1.setClassificacao("B-");
 		
-		AppAves.relatorio("Inclusão do pássaro Hermes", c1);
-		System.out.println();
+		CanarioController.incluir(c1);
+
 
 		Canario c2 = new Canario();
 		c2.setDtNascimento("22/10/2022");
@@ -37,8 +38,8 @@ public class CanarioTeste implements ApplicationRunner {
 		c2.setRaca("Timbrado Espanhol");
 		c2.setClassificacao("A-");
 		
-		AppAves.relatorio("Inclusão do pássaro Renato", c2);
-		System.out.println();
+		CanarioController.incluir(c2);
+
 
 		Canario c3 = new Canario();
 		c3.setDtNascimento("25/10/2020");
@@ -48,7 +49,8 @@ public class CanarioTeste implements ApplicationRunner {
 		c3.setRaca("Gloster");
 		c3.setClassificacao ("A-");
 		
-		AppAves.relatorio("Inclusão do pássaro Arnoldo", c3);
+		CanarioController.incluir(c3);
+		
 
 	}
 

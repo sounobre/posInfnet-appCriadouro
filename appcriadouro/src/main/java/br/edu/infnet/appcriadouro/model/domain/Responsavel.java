@@ -1,9 +1,12 @@
 package br.edu.infnet.appcriadouro.model.domain;
 
+import java.util.Objects;
+
 import br.edu.infnet.appcriadouro.interfaces.IPrinter;
 
 public class Responsavel implements IPrinter {
 
+	private Integer id;
 	private String nome;
 	private String email;
 	private String cpf;
@@ -22,9 +25,58 @@ public class Responsavel implements IPrinter {
 
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 	@Override
 	public String toString() {
 		return "Responsavel: " + nome + ";" + email + ";" + cpf;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cpf);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		Responsavel other = (Responsavel) obj;
+		return Objects.equals(cpf, other.cpf);
+	}
+	
+	
 
 }

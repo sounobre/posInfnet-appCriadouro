@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -45,42 +46,29 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	        <th>Nome</th>
 	        <th>Anilha</th>
 	        <th>Data de nascimento</th>
 	        <th>Conto Praia</th>
 	        <th>Categoria</th>
 	        <th>Tempo de minutos cantando</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr>
-	        <td>Dengoso</td>
-	        <td>01</td>
-	        <td>23/04/2020</td>
-	        <td>Sim</td>
-	        <td>Canto</td>
-	        <td>2</td>
-	      </tr>
-	      
-	       <tr>
-	        <td>Atchin</td>
-	        <td>02</td>
-	        <td>26/05/2020</td>
-	        <td>nãpo</td>
-	        <td>fibra</td>
-	        <td>1</td>
-	      </tr>
-	      
-	       <tr>
-	        <td>Dunga</td>
-	        <td>03</td>
-	        <td>27/08/2020</td>
-	        <td>não</td>
-	        <td>fibra</td>
-	        <td>3.</td>
-	      </tr>
-	      	  		  
+	    	<c:forEach var= "c" items="${listagem}">
+		      <tr>
+		      	<td>${c.id}</td>
+		        <td>${c.nome}</td>
+		        <td>${c.anilha}</td>
+		        <td>${c.dtNascimento}</td>
+		        <td>${c.cantPraia}</td>
+		        <td>${c.categoria}</td>
+		        <td>${c.tempCantMin}</td>
+		        <td><a href="/curio/${c.id}/excluir">Excluir</a></td>
+		      </tr>
+		    </c:forEach>
 	    </tbody>
 	  </table>
 	</div>

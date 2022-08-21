@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -45,42 +46,29 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	       	<th>ID</th>
 	        <th>Nome</th>
 	        <th>Anilha</th>
 	        <th>Data de nascimento</th>
 	        <th>Tipo</th>
 	        <th>Raça</th>
 	        <th>Classificação</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr>
-	        <td>Tiringa</td>
-	        <td>01</td>
-	        <td>20/04/2020</td>
-	        <td>Cor</td>
-	        <td>Salsa</td>
-	        <td>A+.</td>
-	      </tr>
-	      
-	       <tr>
-	        <td>Faísca</td>
-	        <td>02</td>
-	        <td>20/05/2020</td>
-	        <td>Timbre</td>
-	        <td>Timbrado espanhol</td>
-	        <td>A+.</td>
-	      </tr>
-	      
-	       <tr>
-	        <td>Fogo</td>
-	        <td>03</td>
-	        <td>20/08/2020</td>
-	        <td>Porte</td>
-	        <td>Gloster</td>
-	        <td>A+.</td>
-	      </tr>
-	      	  		  
+		    <c:forEach var= "c" items="${listagem}">
+		      <tr>
+		      	<td>${c.id}</td>
+		        <td>${c.nome}</td>
+		        <td>${c.anilha}</td>
+		        <td>${c.dtNascimento}</td>
+		        <td>${c.tipo}</td>
+		        <td>${c.raca}</td>
+		        <td>${c.classificacao}</td>
+		        <td><a href="/canario/${c.id}/excluir">Excluir</a></td>
+		      </tr>
+		    </c:forEach>
 	    </tbody>
 	  </table>
 	</div>

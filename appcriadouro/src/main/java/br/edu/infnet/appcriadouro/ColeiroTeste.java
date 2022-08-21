@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appcriadouro.controller.ColeiroController;
 import br.edu.infnet.appcriadouro.model.domain.Coleiro;
 
 @Component
@@ -26,8 +27,7 @@ public class ColeiroTeste implements ApplicationRunner {
 		c1.setCantTuiTui(true);
 		c1.setRegiao("Sudeste");
 
-		AppAves.relatorio("Inclusão do pássaro Trovão" ,c1);
-		System.out.println();
+		ColeiroController.incluir(c1);
 
 		Coleiro c2 = new Coleiro();
 		c2.setDtNascimento("2021-09-22");
@@ -37,8 +37,7 @@ public class ColeiroTeste implements ApplicationRunner {
 		c2.setCantTuiTui(false);
 		c2.setRegiao("Norte");
 
-		AppAves.relatorio("Inclusão do pássaro Palha" ,c2);
-		System.out.println();
+		ColeiroController.incluir(c2);
 
 		Coleiro c3 = new Coleiro();
 		c3.setDtNascimento("2022-10-25");
@@ -48,8 +47,7 @@ public class ColeiroTeste implements ApplicationRunner {
 		c3.setCantTuiTui(false);
 		c3.setRegiao("Nordeste");
 
-		AppAves.relatorio("Inclusão do pássaro Dengoso" ,c3);
-		System.out.println();
+		ColeiroController.incluir(c3);
 	}
 
 }

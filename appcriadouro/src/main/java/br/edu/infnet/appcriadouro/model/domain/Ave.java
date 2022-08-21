@@ -4,6 +4,7 @@ import br.edu.infnet.appcriadouro.interfaces.IPrinter;
 
 public abstract class Ave implements IPrinter {
 
+	private Integer id;
 	private String nome;
 	private int anilha;
 	private String dtNascimento;
@@ -38,6 +39,16 @@ public abstract class Ave implements IPrinter {
 
 	public void setDtNascimento(String dtNascimento) {
 		this.dtNascimento = dtNascimento;
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 

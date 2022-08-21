@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -45,30 +46,25 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	        <th>Nome</th>
 	        <th>Endereço</th>
 	        <th>Tipo de Ave</th>
+	        <th></th>
 	      </tr>
 	    </thead>
-	    <tbody>	      
-	      <tr>
-	        <td>Plantel do Ananias</td>
-	        <td>Rua Oswaldo 321</td>
-	        <td>Canário</td>
-	      </tr>
-	      <tr>
-	        <td>Criadouro do Tião</td>
-	        <td>Estrada de Prata 531</td>
-	        <td>Coleiro</td>
-	      </tr>
-	       <tr>
-	        <td>Criatório Estrela que Canta</td>
-	        <td>Avenida São Paulo 226</td>
-	        <td>Curió</td>
-	      </tr>    
+	    <tbody>
+	    	<c:forEach var= "c" items="${listagem}">
+		      <tr>
+		      	<td>${c.id}</td>
+		        <td>${c.nome}</td>
+		        <td>${c.endereco}</td>
+		        <td>${c.tpAve}</td>
+		        <td><a href="/criadouro/${c.id}/excluir">Excluir</a></td>
+		      </tr>
+		    </c:forEach>
 	    </tbody>
 	  </table>
-	 
 	</div>
 </body>
 </html>

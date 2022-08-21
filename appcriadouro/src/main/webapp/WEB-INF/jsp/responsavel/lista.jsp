@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -45,27 +46,23 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	        <th>Nome</th>
 	        <th>Email</th>
 	        <th>CPF</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>	      
-	      <tr>
-	        <td>Tião</td>
-	        <td>tiao@gmail.com</td>
-	        <td>12345678910</td>
-	      </tr>
-	       <tr>
-	        <td>Alfredo</td>
-	        <td>adealfredo@hotmail.com</td>
-	        <td>23456789101</td>
-	      </tr>
-	      <tr>
-	        <td>Raimundo Fagner</td>
-	        <td>rfagner@outlook.com</td>
-	        <td>34567891012</td>
-	      </tr>	      
+	    	<c:forEach var= "c" items="${listagem}">
+		      <tr>
+		      	<td>${c.id}</td>
+		        <td>${c.nome}</td>
+		        <td>${c.email}</td>
+		        <td>${c.cpf}</td>
+		        <td><a href="/responsavel/${c.id}/excluir">Excluir</a></td>
+		      </tr>
+		    </c:forEach>
 	    </tbody>
 	  </table>
 	</div>

@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -45,42 +46,29 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	        <th>Nome</th>
 	        <th>Anilha</th>
 	        <th>Data de nascimento</th>
 	        <th>Canta tui tui</th>
 	        <th>Região</th>
 	        <th>Cantos por minuto</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr>
-	        <td>Alpiste</td>
-	        <td>01</td>
-	        <td>25/04/2020</td>
-	        <td>Sim</td>
-	        <td>Norte</td>
-	        <td>3</td>
-	      </tr>
-	      
-	       <tr>
-	        <td>Painço</td>
-	        <td>02</td>
-	        <td>25/05/2020</td>
-	        <td>não</td>
-	        <td>nordeste</td>
-	        <td>1</td>
-	      </tr>
-	      
-	       <tr>
-	        <td>Aveia</td>
-	        <td>03</td>
-	        <td>25/08/2020</td>
-	        <td>não</td>
-	        <td>Sudeste</td>
-	        <td>8</td>
-	      </tr>
-	      	  		  
+	    <c:forEach var= "c" items="${listagem}">
+		      <tr>
+		      	<td>${c.id}</td>
+		        <td>${c.nome}</td>
+		        <td>${c.anilha}</td>
+		        <td>${c.dtNascimento}</td>
+		        <td>${c.cantTuiTui}</td>
+		        <td>${c.regiao}</td>
+		        <td>${c.cantPorMin}</td>
+		        <td><a href="/coleiro/${c.id}/excluir">Excluir</a></td>
+		      </tr>
+		    </c:forEach>
 	    </tbody>
 	  </table>
 	</div>

@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appcriadouro.controller.CurioController;
 import br.edu.infnet.appcriadouro.model.domain.Curio;
 
 @Component
@@ -26,8 +27,7 @@ public class CurioTeste implements ApplicationRunner {
 		c1.setCategoria("Canto");
 		c1.setTempCantMin(6);
 		
-		AppAves.relatorio("Inclusão do pássaro Alpiste" ,c1);
-		System.out.println();
+		CurioController.incluir(c1);
 
 		Curio c2 = new Curio();
 		c2.setDtNascimento("2021-05-20");
@@ -37,9 +37,8 @@ public class CurioTeste implements ApplicationRunner {
 		c2.setCategoria("Canto");
 		c2.setTempCantMin(3);
 
-		AppAves.relatorio("Inclusão do pássaro Aveia" ,c2);
-		System.out.println();
-
+		CurioController.incluir(c2);
+		
 		Curio c3 = new Curio();
 		c3.setDtNascimento("2022-06-25");
 		c3.setAnilha(3);
@@ -48,8 +47,7 @@ public class CurioTeste implements ApplicationRunner {
 		c3.setCategoria("Fibra");
 		c3.setTempCantMin(4);
 		
-
-		AppAves.relatorio("Inclusão do pássaro Painço" ,c3);
+		CurioController.incluir(c3);
 	
 	}
 
