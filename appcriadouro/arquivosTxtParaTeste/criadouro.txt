@@ -1,0 +1,3 @@
+Plantel dos canários;Rua da criação de canario Nº 1;Canário;Diego Nobre;sounobre@hotmail.com;12345678910
+Plantel dos curiós;Rua da criação de curió Nº 1;Coleiro;Ronaldo Matias;matias@hotmail.com;23456789101
+Plantel dos coleitos;Rua da criação de coleiro Nº 1;Curió;Rogerio Neri;rneri@hotmail.com;34567891011

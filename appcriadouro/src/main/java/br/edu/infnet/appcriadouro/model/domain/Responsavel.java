@@ -3,6 +3,7 @@ package br.edu.infnet.appcriadouro.model.domain;
 import java.util.Objects;
 
 import br.edu.infnet.appcriadouro.interfaces.IPrinter;
+import br.edu.infnet.appcriadouro.model.domain.exceptions.CpfInvalidoException;
 
 public class Responsavel implements IPrinter {
 
@@ -11,8 +12,17 @@ public class Responsavel implements IPrinter {
 	private String email;
 	private String cpf;
 
-	public Responsavel(String nome, String email, String cpf) {
-		super();
+	public Responsavel(String nome, String email, String cpf) throws CpfInvalidoException {
+		
+		if(cpf == null) {
+			throw new CpfInvalidoException("Não é possível aceitar CPF nulo.");
+		}
+		
+		if(cpf.isEmpty()) {
+			throw new CpfInvalidoException("Não é possível aceitar CPF sem preenchimento.");
+		}
+		
+		
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;

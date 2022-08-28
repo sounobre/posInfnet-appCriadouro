@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 import br.edu.infnet.appcriadouro.interfaces.IPrinter;
+import br.edu.infnet.appcriadouro.model.domain.exceptions.CriadouroSemAvesException;
+import br.edu.infnet.appcriadouro.model.domain.exceptions.ResponsavelNuloException;
 
 public class Criadouro implements IPrinter {
 
@@ -15,9 +17,43 @@ public class Criadouro implements IPrinter {
 	private Responsavel responsavel;
 	private Set<Ave> aves;
 
-	public Criadouro(Responsavel responsavel) {
+	public Criadouro(Responsavel responsavel, Set<Ave> aves) throws ResponsavelNuloException, CriadouroSemAvesException {
+		
+		if(responsavel == null) {
+			throw new ResponsavelNuloException("Impossível criar um criadouro sem um responsável");
+		}
+		
+		if(aves.size() < 1) {
+			throw new CriadouroSemAvesException("Impossível criar um criadouro sem aves");
+		}
+		
 		this.dtCriaddouro = LocalDateTime.now().minusYears(1);
 		this.responsavel = responsavel;
+		this.aves = aves;
+	}
+
+	public LocalDateTime getDtCriaddouro() {
+		return dtCriaddouro;
+	}
+
+	public void setDtCriaddouro(LocalDateTime dtCriaddouro) {
+		this.dtCriaddouro = dtCriaddouro;
+	}
+
+	public Responsavel getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(Responsavel responsavel) {
+		this.responsavel = responsavel;
+	}
+
+	public Set<Ave> getAves() {
+		return aves;
+	}
+
+	public void setAves(Set<Ave> aves) {
+		this.aves = aves;
 	}
 
 	@Override
@@ -39,14 +75,6 @@ public class Criadouro implements IPrinter {
 		return tpAve;
 	}
 
-	public Set<Ave> getAves() {
-		return aves;
-	}
-
-	public void setAves(Set<Ave> aves) {
-		this.aves = aves;
-	}
-
 	public void setTpAve(String tpAve) {
 		this.tpAve = tpAve;
 	}
@@ -58,7 +86,7 @@ public class Criadouro implements IPrinter {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -69,7 +97,7 @@ public class Criadouro implements IPrinter {
 
 	@Override
 	public String toString() {
-		return "Criadouro: " + nome + ";" + endereco + ";" + tpAve + ";" + dtCriaddouro  + ";" + responsavel;
+		return "Criadouro: " + nome + ";" + endereco + ";" + tpAve + ";" + dtCriaddouro + ";" + responsavel;
 	}
-	
+
 }

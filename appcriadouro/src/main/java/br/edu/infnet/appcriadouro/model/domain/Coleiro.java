@@ -1,5 +1,7 @@
 package br.edu.infnet.appcriadouro.model.domain;
 
+import br.edu.infnet.appcriadouro.model.domain.exceptions.CantoPorMinutoZeradoException;
+
 public class Coleiro extends Ave {
 
 	private boolean cantTuiTui;
@@ -31,6 +33,18 @@ public class Coleiro extends Ave {
 	public void setCantPorMin(int cantPorMin) {
 		this.cantPorMin = cantPorMin;
 	}
+	
+	@Override
+	public String mostrarNome() throws CantoPorMinutoZeradoException {
+		
+		if(cantPorMin <= 0) {
+			
+			throw new CantoPorMinutoZeradoException("Tamanho invalido para o campo canto por minuto {" + cantPorMin + "}, no mínimo 1, ou o pássaro está desclassificado.");
+			
+		}
+		
+		return "Nome do pássaro é " + getNome();
+	}
 
 	@Override
 	public String toString() {
@@ -44,8 +58,5 @@ public class Coleiro extends Ave {
 
 	}
 
-	@Override
-	public String mostrarNome() {
-		return "Nome do pássaro é " + getNome();
-	}
+	
 }

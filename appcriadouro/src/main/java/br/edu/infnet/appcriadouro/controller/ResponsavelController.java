@@ -22,7 +22,7 @@ public class ResponsavelController {
 		responsavel.setId(id++);
 		mapaResponsavel.put(responsavel.getId(), responsavel);
 
-		AppAves.relatorio("Inclusão do pássaro " + responsavel.getNome(), responsavel);
+		AppAves.relatorio("Inclusão do responsavel " + responsavel.getNome(), responsavel);
 	}
 
 	public static Collection<Responsavel> obterLista() {

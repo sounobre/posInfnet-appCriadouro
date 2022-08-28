@@ -1,6 +1,9 @@
 package br.edu.infnet.appcriadouro.model.domain;
 
 import br.edu.infnet.appcriadouro.interfaces.IPrinter;
+import br.edu.infnet.appcriadouro.model.domain.exceptions.CantoPorMinutoZeradoException;
+import br.edu.infnet.appcriadouro.model.domain.exceptions.CategoriaInvalidaException;
+import br.edu.infnet.appcriadouro.model.domain.exceptions.TamanhoNomeInvalidoException;
 
 public abstract class Ave implements IPrinter {
 
@@ -9,7 +12,7 @@ public abstract class Ave implements IPrinter {
 	private int anilha;
 	private String dtNascimento;
 
-	public abstract String mostrarNome();
+	public abstract String mostrarNome() throws TamanhoNomeInvalidoException, CantoPorMinutoZeradoException, CategoriaInvalidaException;
 
 	
 	public String getNome() {
@@ -54,6 +57,6 @@ public abstract class Ave implements IPrinter {
 
 	@Override
 	public String toString() {
-		return nome + ";" + anilha + ";" + dtNascimento + ";" + mostrarNome();
+		return nome + ";" + anilha + ";" + dtNascimento;
 	}
 }

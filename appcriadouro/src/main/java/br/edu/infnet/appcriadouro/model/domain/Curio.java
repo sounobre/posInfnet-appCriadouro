@@ -1,5 +1,7 @@
 package br.edu.infnet.appcriadouro.model.domain;
 
+import br.edu.infnet.appcriadouro.model.domain.exceptions.CategoriaInvalidaException;
+
 public class Curio extends Ave {
 
 	private boolean cantPraia;
@@ -39,8 +41,13 @@ public class Curio extends Ave {
 
 
 	@Override
-	public String mostrarNome() {
-		return tempCantMin > 5 ? "Esse camarada vale uma casa" : "Vale um dinheiro, mas não tanto quanto você quer :)";
+	public String mostrarNome() throws CategoriaInvalidaException {
+		
+		if(!categoria.equalsIgnoreCase("fibra") && !categoria.equalsIgnoreCase("canto")) {
+			throw new CategoriaInvalidaException("Categoria invalida {" + categoria + "}, as categorias existentes são Fibra ou Canto.");
+		}
+		
+		return getNome() + " " + (tempCantMin > 5 ? "Esse camarada vale uma casa" : "Vale um dinheiro, mas não tanto quanto você quer :)");
 	}
 	
 	

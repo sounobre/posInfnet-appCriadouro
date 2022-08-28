@@ -1,5 +1,10 @@
 package br.edu.infnet.appcriadouro;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -7,47 +12,67 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appcriadouro.controller.ColeiroController;
 import br.edu.infnet.appcriadouro.model.domain.Coleiro;
+import br.edu.infnet.appcriadouro.model.domain.exceptions.CantoPorMinutoZeradoException;
 
 @Component
 @Order(5)
 public class ColeiroTeste implements ApplicationRunner {
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
-	
+	public void run(ApplicationArguments args) {
+
 		System.out.println();
 		System.out.println("######Coleiro######");
 		System.out.println();
 		
-		Coleiro c1 = new Coleiro();
-		c1.setDtNascimento("2021-10-01");
-		c1.setAnilha(1);
-		c1.setNome("Trovão");
-		c1.setCantPorMin(3);
-		c1.setCantTuiTui(true);
-		c1.setRegiao("Sudeste");
+		
+		String dir = "c:/dev/";
 
-		ColeiroController.incluir(c1);
+		String arq = "coleiro.txt";
 
-		Coleiro c2 = new Coleiro();
-		c2.setDtNascimento("2021-09-22");
-		c2.setAnilha(2);
-		c2.setNome("Palha");
-		c2.setCantPorMin(4);
-		c2.setCantTuiTui(false);
-		c2.setRegiao("Norte");
+		try {
+			try {
+				FileReader fileReader = new FileReader(dir + arq);
+				BufferedReader leitura = new BufferedReader(fileReader);
 
-		ColeiroController.incluir(c2);
+				String linha = leitura.readLine();
+				while (linha != null) {
+					
+					try {
+						
+						String[] campos = linha.split(";");
+						
+						Coleiro c1 = new Coleiro();
+						c1.setDtNascimento(campos[5]); 
+						c1.setAnilha( Integer.parseInt(campos[4]));
+						c1.setNome(campos[3]);
+						c1.setCantPorMin(Integer.parseInt(campos[2]));
+						c1.setCantTuiTui(Boolean.valueOf(campos[0]));
+						c1.setRegiao(campos[1]);
+						System.out.println("Nome do pássaro é: " + c1.mostrarNome());
+						ColeiroController.incluir(c1);
+					} catch (CantoPorMinutoZeradoException e) {
+						System.out.println("[ERROR - COLEIRO] " + e.getMessage());
+					}
 
-		Coleiro c3 = new Coleiro();
-		c3.setDtNascimento("2022-10-25");
-		c3.setAnilha(3);
-		c3.setNome("Dengoso");
-		c3.setCantPorMin(6);
-		c3.setCantTuiTui(false);
-		c3.setRegiao("Nordeste");
+					linha = leitura.readLine();
+				}
 
-		ColeiroController.incluir(c3);
+				leitura.close();
+				fileReader.close();
+
+			} catch (FileNotFoundException e) {
+				System.out.println("[ERRO] O arquivo não existe");
+			} catch (IOException e) {
+				System.out.println("[ERRO] Problema no fechamento do arquivo");
+			}
+		} finally {
+			System.out.println("Terminou");
+		}
+
+		
+
+
 	}
 
 }

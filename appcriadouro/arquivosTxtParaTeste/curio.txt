@@ -1,0 +1,3 @@
+true;Canto;6;Alpiste;1;2021-06-01
+false;Fibra;3;Aveia;2;2021-05-20
+false;Fibra;4;Painço;3;2022-05-20

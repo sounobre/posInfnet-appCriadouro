@@ -22,7 +22,7 @@ public class CriadouroController {
 		criadouro.setId(id++);
 		mapaCriadouro.put(criadouro.getId(), criadouro);
 
-		AppAves.relatorio("Inclusão do pássaro " + criadouro.getNome(), criadouro);
+		AppAves.relatorio("Inclusão do criadouro " + criadouro.getNome(), criadouro);
 	}
 
 	public static Collection<Criadouro> obterLista() {

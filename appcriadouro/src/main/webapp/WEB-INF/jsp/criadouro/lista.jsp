@@ -50,6 +50,9 @@
 	        <th>Nome</th>
 	        <th>Endereço</th>
 	        <th>Tipo de Ave</th>
+	        <th>Responsavel</th>
+	        <th>Aves</th>
+	        <th>Data de criação</th>
 	        <th></th>
 	      </tr>
 	    </thead>
@@ -60,6 +63,9 @@
 		        <td>${c.nome}</td>
 		        <td>${c.endereco}</td>
 		        <td>${c.tpAve}</td>
+		        <td>${c.responsavel.nome}</td>
+		        <td>${c.aves.size()}</td>
+		         <td>${c.dtCriaddouro}</td>
 		        <td><a href="/criadouro/${c.id}/excluir">Excluir</a></td>
 		      </tr>
 		    </c:forEach>
