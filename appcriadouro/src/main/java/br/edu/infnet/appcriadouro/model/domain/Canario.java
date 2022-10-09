@@ -1,7 +1,11 @@
 package br.edu.infnet.appcriadouro.model.domain;
 
-import br.edu.infnet.appcriadouro.model.domain.exceptions.TamanhoNomeInvalidoException;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+import br.edu.infnet.appcriadouro.model.domain.exceptions.TamanhoNomeInvalidoException;
+@Entity
+@Table(name = "TCanario")
 public class Canario extends Ave {
 
 	private String tipo;

@@ -5,18 +5,22 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.appcriadouro.controller.ResponsavelController;
 import br.edu.infnet.appcriadouro.model.domain.Responsavel;
 import br.edu.infnet.appcriadouro.model.domain.exceptions.CpfInvalidoException;
+import br.edu.infnet.appcriadouro.model.service.ResponsavelService;
 
 @Component
-@Order(1)
+@Order(2)
 public class ResponsavelTeste implements ApplicationRunner {
+	
+	@Autowired
+	ResponsavelService responsavelService;
 
 	@Override
 	public void run(ApplicationArguments args) {
@@ -36,7 +40,7 @@ public class ResponsavelTeste implements ApplicationRunner {
 					try {
 						String[] campos = linha.split(";");
 						Responsavel r1 = new Responsavel(campos[0], campos[1], campos[2]);
-						ResponsavelController.incluir(r1);
+						responsavelService.incluir(r1);
 					} catch (CpfInvalidoException e) {
 						System.out.println("[ERROR] - RESPONSAVEL " + e.getMessage());
 					}

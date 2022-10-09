@@ -5,27 +5,26 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.appcriadouro.controller.ColeiroController;
 import br.edu.infnet.appcriadouro.model.domain.Coleiro;
 import br.edu.infnet.appcriadouro.model.domain.exceptions.CantoPorMinutoZeradoException;
+import br.edu.infnet.appcriadouro.model.service.ColeiroService;
 
 @Component
-@Order(5)
+@Order(4)
 public class ColeiroTeste implements ApplicationRunner {
+
+	@Autowired
+	ColeiroService coleiroService;
 
 	@Override
 	public void run(ApplicationArguments args) {
 
-		System.out.println();
-		System.out.println("######Coleiro######");
-		System.out.println();
-		
-		
 		String dir = "c:/dev/";
 
 		String arq = "coleiro.txt";
@@ -37,20 +36,20 @@ public class ColeiroTeste implements ApplicationRunner {
 
 				String linha = leitura.readLine();
 				while (linha != null) {
-					
+
 					try {
-						
+
 						String[] campos = linha.split(";");
-						
+
 						Coleiro c1 = new Coleiro();
-						c1.setDtNascimento(campos[5]); 
-						c1.setAnilha( Integer.parseInt(campos[4]));
+						c1.setDtNascimento(campos[5]);
+						c1.setAnilha(Integer.parseInt(campos[4]));
 						c1.setNome(campos[3]);
 						c1.setCantPorMin(Integer.parseInt(campos[2]));
 						c1.setCantTuiTui(Boolean.valueOf(campos[0]));
 						c1.setRegiao(campos[1]);
 						System.out.println("Nome do pássaro é: " + c1.mostrarNome());
-						ColeiroController.incluir(c1);
+						coleiroService.incluir(c1);
 					} catch (CantoPorMinutoZeradoException e) {
 						System.out.println("[ERROR - COLEIRO] " + e.getMessage());
 					}
@@ -69,9 +68,6 @@ public class ColeiroTeste implements ApplicationRunner {
 		} finally {
 			System.out.println("Terminou");
 		}
-
-		
-
 
 	}
 

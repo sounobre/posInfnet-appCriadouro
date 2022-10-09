@@ -1,53 +1,34 @@
 package br.edu.infnet.appcriadouro.controller;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
-import br.edu.infnet.appcriadouro.AppAves;
-import br.edu.infnet.appcriadouro.model.domain.Ave;
+import br.edu.infnet.appcriadouro.model.domain.Usuario;
+import br.edu.infnet.appcriadouro.model.service.AveService;
 
 @Controller
 public class AveController {
 
-	private static Map<Integer, Ave> mapaAve = new HashMap<>();
-	private static Integer id = 1;
-
-	public static void incluir(Ave ave) {
-		ave.setId(id++);
-		mapaAve.put(ave.getId(), ave);
-
-		AppAves.relatorio("Inclusão do pássaro " + ave.getNome(), ave);
-	}
-
-	public static Collection<Ave> obterLista() {
-		return mapaAve.values();
-	}
-
-	private static void excluir(Integer id) {
-		mapaAve.remove(id);
-
-	}
+	@Autowired
+	private AveService aveService;
 
 	@GetMapping(value = "/ave/lista")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 
-		model.addAttribute("listagem", obterLista());
-
+		model.addAttribute("listagem", aveService.obterLista(usuario));
+		
 		return "ave/lista";
 	}
 
 	@GetMapping(value = "/ave/{id}/excluir")
-	private String exclusao(@PathVariable Integer id) {
-
-		excluir(id);
-
+	public String excluir(@PathVariable Integer id) {
+		
+		aveService.excluir(id);
+		
 		return "redirect:/ave/lista";
-
 	}
 }

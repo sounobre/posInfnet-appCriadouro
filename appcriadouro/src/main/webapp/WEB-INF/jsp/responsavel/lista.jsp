@@ -10,39 +10,21 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-light navbar-light">
-  <div class="container-fluid">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/canario/lista">Canario</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/coleiro/lista">Coleiro</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/curio/lista">Curio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="/ave/lista">Ave</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/criadouro/lista">Criadouro</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/responsavel/lista">Responsavel</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+	<c:import url="/WEB-INF/jsp/menu.jsp" />
 
 	<div class="container mt-3">
+	
+	  <c:if test="${not empty mensagem}">
+			<div class="alert ${tipo}">
+			  <strong>Informação</strong> ${mensagem}
+			</div>
+		</c:if>
+	
 	  <h2>AppCriadouro</h2>
 	  <p>Criadouro de Pássaros nativos e exóticos.</p>   
 	  
 	  <h3>Classe: Responsável</h3>         
+	  <h4><a href="/responsavel">Novo</a></h4>
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
@@ -60,6 +42,7 @@
 		        <td>${c.nome}</td>
 		        <td>${c.email}</td>
 		        <td>${c.cpf}</td>
+		        <td>${c.usuario.email}</td>
 		        <td><a href="/responsavel/${c.id}/excluir">Excluir</a></td>
 		      </tr>
 		    </c:forEach>

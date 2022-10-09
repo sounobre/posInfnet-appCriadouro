@@ -1,53 +1,52 @@
 package br.edu.infnet.appcriadouro.controller;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
-import br.edu.infnet.appcriadouro.AppAves;
 import br.edu.infnet.appcriadouro.model.domain.Coleiro;
+import br.edu.infnet.appcriadouro.model.domain.Usuario;
+import br.edu.infnet.appcriadouro.model.service.ColeiroService;
 
 @Controller
 public class ColeiroController {
 
-	private static Map<Integer, Coleiro> mapaColeiro = new HashMap<>();
-	private static Integer id = 1;
 
-	public static void incluir(Coleiro coleiro) {
-		coleiro.setId(id++);
-		mapaColeiro.put(coleiro.getId(), coleiro);
-
-		AppAves.relatorio("Inclusão do pássaro " + coleiro.getNome(), coleiro);
-	}
-
-	public static Collection<Coleiro> obterLista() {
-		return mapaColeiro.values();
-	}
-
-	private static void excluir(Integer id) {
-		mapaColeiro.remove(id);
-
-	}
+	@Autowired
+	private ColeiroService coleiroService;
 
 	@GetMapping(value = "/coleiro/lista")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 
-		model.addAttribute("listagem", obterLista());
-
+		model.addAttribute("listagem", coleiroService.obterLista(usuario));
+		
 		return "coleiro/lista";
 	}
-
-	@GetMapping(value = "/coleiro/{id}/excluir")
-	private String exclusao(@PathVariable Integer id) {
-
-		excluir(id);
-
+	
+	@GetMapping(value = "/coleiro")
+	public String telaCadastro() {
+		return "coleiro/cadastro";
+	}
+	
+	@PostMapping(value = "/coleiro/incluir")
+	public String incluir(Coleiro coleiro, @SessionAttribute("user") Usuario usuario) {
+		
+		coleiro.setUsuario(usuario);
+		
+		coleiroService.incluir(coleiro);
+		
 		return "redirect:/coleiro/lista";
-
+	}
+	
+	@GetMapping(value = "/coleiro/{id}/excluir")
+	public String excluir(@PathVariable Integer id) {
+		
+		coleiroService.excluir(id);
+		
+		return "redirect:/coleiro/lista";
 	}
 }

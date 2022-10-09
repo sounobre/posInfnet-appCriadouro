@@ -10,39 +10,14 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-light navbar-light">
-  <div class="container-fluid">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/canario/lista">Canario</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/coleiro/lista">Coleiro</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/curio/lista">Curio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="/ave/lista">Ave</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/criadouro/lista">Criadouro</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/responsavel/lista">Responsavel</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+	<c:import url="/WEB-INF/jsp/menu.jsp" />
 
 	<div class="container mt-3">
 	  <h2>AppCriadouro</h2>
 	  <p>Criadouro de Pássaros nativos e exóticos.</p>   
 	  
-	  <h3>Classe: Curio</h3>         
+	  <h3>Classe: Curio</h3>    
+	  <h4><a href="/curio">Novo</a></h4>     
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>

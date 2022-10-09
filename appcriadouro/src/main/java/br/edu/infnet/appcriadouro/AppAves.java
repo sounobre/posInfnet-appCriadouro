@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appcriadouro.interfaces.IPrinter;
 
-//@PropertySource("classpath:arquivos")
+@Component
 public class AppAves {
 
 	public static void relatorio(String mensagem, IPrinter printer) {

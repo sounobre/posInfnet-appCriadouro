@@ -1,21 +1,52 @@
 package br.edu.infnet.appcriadouro.model.domain;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import br.edu.infnet.appcriadouro.interfaces.IPrinter;
 import br.edu.infnet.appcriadouro.model.domain.exceptions.CriadouroSemAvesException;
 import br.edu.infnet.appcriadouro.model.domain.exceptions.ResponsavelNuloException;
 
+@Entity
+@Table(name = "TCriadouro")
 public class Criadouro implements IPrinter {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String endereco;
 	private String tpAve;
-	private LocalDateTime dtCriaddouro;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dtCriaddouro;
+	
+	@OneToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "idResponsavel")
 	private Responsavel responsavel;
+	
+	@ManyToMany(cascade = CascadeType.DETACH)
 	private Set<Ave> aves;
+	
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+	
+	public Criadouro() {
+		this.dtCriaddouro = new Date();
+	}
 
 	public Criadouro(Responsavel responsavel, Set<Ave> aves) throws ResponsavelNuloException, CriadouroSemAvesException {
 		
@@ -27,16 +58,16 @@ public class Criadouro implements IPrinter {
 			throw new CriadouroSemAvesException("Impossível criar um criadouro sem aves");
 		}
 		
-		this.dtCriaddouro = LocalDateTime.now().minusYears(1);
+		this.dtCriaddouro = new Date();
 		this.responsavel = responsavel;
 		this.aves = aves;
 	}
 
-	public LocalDateTime getDtCriaddouro() {
+	public Date getDtCriaddouro() {
 		return dtCriaddouro;
 	}
 
-	public void setDtCriaddouro(LocalDateTime dtCriaddouro) {
+	public void setDtCriaddouro(Date dtCriaddouro) {
 		this.dtCriaddouro = dtCriaddouro;
 	}
 
@@ -93,6 +124,14 @@ public class Criadouro implements IPrinter {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

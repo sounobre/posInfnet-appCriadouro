@@ -5,18 +5,22 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.appcriadouro.controller.CurioController;
 import br.edu.infnet.appcriadouro.model.domain.Curio;
 import br.edu.infnet.appcriadouro.model.domain.exceptions.CategoriaInvalidaException;
+import br.edu.infnet.appcriadouro.model.service.CurioService;
 
 @Component
-@Order(4)
+@Order(5)
 public class CurioTeste implements ApplicationRunner {
+	
+	@Autowired
+	CurioService curioService;
 
 	@Override
 	public void run(ApplicationArguments args) {
@@ -50,7 +54,7 @@ public class CurioTeste implements ApplicationRunner {
 						c1.setCategoria(campos[1]);
 						c1.setTempCantMin(Integer.parseInt(campos[2]));
 						System.out.println("Nome do pássaro é: " + c1.mostrarNome());
-						CurioController.incluir(c1);
+						curioService.incluir(c1);
 					} catch (CategoriaInvalidaException e) {
 						System.out.println("[ERROR - CURIO] " + e.getMessage());
 					}

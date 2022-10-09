@@ -1,7 +1,12 @@
 package br.edu.infnet.appcriadouro.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import br.edu.infnet.appcriadouro.model.domain.exceptions.CantoPorMinutoZeradoException;
 
+@Entity
+@Table(name = "TColeiro")
 public class Coleiro extends Ave {
 
 	private boolean cantTuiTui;

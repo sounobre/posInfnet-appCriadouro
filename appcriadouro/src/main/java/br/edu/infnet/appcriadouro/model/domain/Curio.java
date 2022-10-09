@@ -1,7 +1,12 @@
 package br.edu.infnet.appcriadouro.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import br.edu.infnet.appcriadouro.model.domain.exceptions.CategoriaInvalidaException;
 
+@Entity
+@Table(name = "TCurio")
 public class Curio extends Ave {
 
 	private boolean cantPraia;
