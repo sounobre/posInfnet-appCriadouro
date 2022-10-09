@@ -1,0 +1,29 @@
+P;Projeto de Criadouro de Pássaros nativos e exóticos.;Projeto para aves
+C;Criadouro
+A;nome;String;Nome do criadouro.
+A;endereco;String;Endereço do criadouro.
+A;tpAve;String;Tipo de ave vendida.
+C;Responsavel
+A;nome;String;Nome do responsável pelo criadouro.
+A;email;String;Email do responsável pelo criadouro.
+A;cpf;String;CPF do responsável pelo criadouro.
+C;Ave
+A;nome;String;Nome da ave.
+A;anilha;String;Número da anilha de identificação da ave.
+A;dtNascimento;String;Data de nascimento da ave.
+C;Canário
+A;tipo;String;Tipo de canário (timbre, porte ou cor).
+A;raca;String;Raça do Canário.
+A;classificacao;String;Classificacão do padrão da qualidade do canário.
+C;Curió
+A;cantPraia;boolean;Informação se o canto do curió é o praia clássico.
+A;categoria;String;Categoria do curió (canto ou fibra).
+A;tempCantMin;int;Minutos que o curió canta sem pausar.
+C;Coleiro
+A;cantTuiTui;boolean;Informação se o canto do coleiro é Tui Tui.
+A;regiao;String;Região de onde o coleiro pertence.
+A;cantPorMin;int;Quantas repetições de canto o coleiro faz por minuto.
+C;Usuario
+A;nome;String;Nome do usuario
+A;email;String;E-mail do usuario
+A;senha;String;Senha do usuario
